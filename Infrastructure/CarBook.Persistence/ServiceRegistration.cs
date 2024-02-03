@@ -1,4 +1,6 @@
-﻿using CarBook.Persistence.Context;
+﻿using CarBook.Application.Interfaces.Repositories;
+using CarBook.Persistence.Context;
+using CarBook.Persistence.Repositories;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -16,6 +18,8 @@ namespace CarBook.Persistence
         public static void AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<CarBookDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("sqlConnection")));
+            services.AddScoped<IAboutReadRepository, AboutReadRepository>();
+            services.AddScoped<IAboutWriteRepository, AboutWriteRepository>();
         }
     }
 }
