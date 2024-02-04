@@ -20,6 +20,16 @@ namespace CarBook.Persistence
             services.AddDbContext<CarBookDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("sqlConnection")));
             services.AddScoped<IAboutReadRepository, AboutReadRepository>();
             services.AddScoped<IAboutWriteRepository, AboutWriteRepository>();
+            services.AddScoped<IBannerReadRepository, BannerReadRepository>();
+            services.AddScoped<IBannerWriteRepository, BannerWriteRepository>();
+            services.AddScoped<ICarReadRepository, CarReadRepository>();
+            services.AddScoped<ICarWriteRepository, CarWriteRepository>();
+            services.AddScoped<IBrandReadRepository, BrandReadRepository>();
+            services.AddScoped<IBrandWriteRepository, BrandWriteRepository>();
+            services.AddScoped<ICategoryWriteRepository, CategoryWriteRepository>();
+            services.AddScoped<ICategoryReadRepository, CategoryReadRepository>();
+            services.AddScoped<IContactReadRepository, ContactReadRepository>();
+            services.AddScoped<IContactWriteRepository, ContactWriteRepository>();
         }
     }
 }
