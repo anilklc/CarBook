@@ -30,6 +30,18 @@ namespace CarBook.Persistence
             services.AddScoped<ICategoryReadRepository, CategoryReadRepository>();
             services.AddScoped<IContactReadRepository, ContactReadRepository>();
             services.AddScoped<IContactWriteRepository, ContactWriteRepository>();
+            services.AddScoped<IFeatureReadRepository, FeatureReadRepository>();
+            services.AddScoped<IFeatureWriteRepository, FeatureWriteRepository>();
+            services.AddScoped<IFooterAddressReadRepository, FooterAddressReadRepository>();
+            services.AddScoped<IFooterAddressWriteRepository, FooterAddressWriteRepository>();
+            services.AddScoped<ILocationReadRepository, LocationReadRepository>();
+            services.AddScoped<ILocationWriteRepository, LocationWriteRepository>();
+            services.AddScoped<IPricingReadRepository, PricingReadRepository>();
+            services.AddScoped<IPricingWriteRepository, PricingWriteRepository>();
+            services.AddScoped<IServiceReadRepository, ServiceReadRepository>();
+            services.AddScoped<IServiceWriteRepository, ServiceWriteRepository>();
+            services.AddScoped<ISocialMediaReadRepository, SocialMediaReadRepository>();
+            services.AddScoped<ISocialMediaWriteRepository, SocialMediaWriteRepository>();
         }
     }
 }

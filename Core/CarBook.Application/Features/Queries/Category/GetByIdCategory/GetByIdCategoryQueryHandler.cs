@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace CarBook.Application.Features.Queries.Category.GetByIdCategory
 {
-    public class GetByIdCategoryQueryHandler : IRequestHandler<GetByIdCategoryQueryRequest, GetByIdCategoryQueryResponse>
+    public class GetByIdServiceQueryHandler : IRequestHandler<GetByIdCategoryQueryRequest, GetByIdCategoryQueryResponse>
     {
         private readonly ICategoryReadRepository _categoryReadRepository;
 
-        public GetByIdCategoryQueryHandler(ICategoryReadRepository categoryReadRepository)
+        public GetByIdServiceQueryHandler(ICategoryReadRepository categoryReadRepository)
         {
             _categoryReadRepository = categoryReadRepository;
         }
