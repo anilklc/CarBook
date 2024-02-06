@@ -4,5 +4,6 @@
     Layout = "~/Views/UILayout/Index.cshtml";
 }
 
-<h1>Hakkımda</h1>
-
+@await Component.InvokeAsync("_AboutUsComponentPartial")
+@await Component.InvokeAsync("_BecomeADriverComponentPartial")
+@await Component.InvokeAsync("_TestimonialComponentPartial")
