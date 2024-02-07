@@ -21,35 +21,35 @@ namespace CarBook.API.Controllers
         }
 
         [HttpGet("[action]")]
-        public async Task<IActionResult> GetAllAbout()
+        public async Task<IActionResult> GetAllContact()
         {
             GetAllContactQueryResponse response = await _mediator.Send(new GetAllContactQueryRequest());
             return Ok(response);
         }
 
         [HttpGet("{Id}")]
-        public async Task<IActionResult> GetByIdAbout([FromRoute] GetByIdContactQueryRequest request)
+        public async Task<IActionResult> GetByIdContact([FromRoute] GetByIdContactQueryRequest request)
         {
             GetByIdContactQueryResponse response = await _mediator.Send(request);
             return Ok(response);
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> CreateAbout([FromQuery] CreateContactCommandRequest request)
+        public async Task<IActionResult> CreateContact([FromBody]CreateContactCommandRequest request)
         {
             CreateContactCommandResponse response = await _mediator.Send(request);
             return Ok(response);
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> UpdateAbout([FromQuery] UpdateContactCommandRequest request)
+        public async Task<IActionResult> UpdateContact([FromQuery] UpdateContactCommandRequest request)
         {
             UpdateContactCommandResponse response = await _mediator.Send(request);
             return Ok(response);
         }
 
         [HttpDelete("{Id}")]
-        public async Task<IActionResult> RemoveAbout([FromRoute] RemoveContactCommandRequest request)
+        public async Task<IActionResult> RemoveContact([FromRoute] RemoveContactCommandRequest request)
         {
             RemoveContactCommandResponse response = await _mediator.Send(request);
             return Ok(response);

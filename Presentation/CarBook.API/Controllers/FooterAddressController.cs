@@ -26,7 +26,7 @@ namespace CarBook.API.Controllers
         }
 
         [HttpGet("[action]")]
-        public async Task<IActionResult> GetAllFooterAdress()
+        public async Task<IActionResult> GetAllFooterAddress()
         {
             GetAllFooterAddressQueryResponse response = await _mediator.Send(new GetAllFooterAddressQueryRequest());
             return Ok(response);

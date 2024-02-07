@@ -21,35 +21,35 @@ namespace CarBook.API.Controllers
         }
 
         [HttpGet("[action]")]
-        public async Task<IActionResult> GetAllAbout()
+        public async Task<IActionResult> GetAllBrand()
         {
             GetAllBrandQueryResponse response = await _mediator.Send(new GetAllBrandQueryRequest());
             return Ok(response);
         }
 
         [HttpGet("{Id}")]
-        public async Task<IActionResult> GetByIdAbout([FromRoute] GetByIdBrandQueryRequest request)
+        public async Task<IActionResult> GetByIdBrand([FromRoute] GetByIdBrandQueryRequest request)
         {
             GetByIdBrandQueryResponse response = await _mediator.Send(request);
             return Ok(response);
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> CreateAbout([FromQuery] CreateBrandCommandRequest request)
+        public async Task<IActionResult> CreateBrand([FromQuery] CreateBrandCommandRequest request)
         {
             CreateBrandCommandResponse response = await _mediator.Send(request);
             return Ok(response);
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> UpdateAbout([FromQuery] UpdateBrandCommandRequest request)
+        public async Task<IActionResult> UpdateBrand([FromQuery] UpdateBrandCommandRequest request)
         {
             UpdateBrandCommandResponse response = await _mediator.Send(request);
             return Ok(response);
         }
 
         [HttpDelete("{Id}")]
-        public async Task<IActionResult> RemoveAbout([FromRoute] RemoveBrandCommandRequest request)
+        public async Task<IActionResult> RemoveBrand([FromRoute] RemoveBrandCommandRequest request)
         {
             RemoveBrandCommandResponse response = await _mediator.Send(request);
             return Ok(response);

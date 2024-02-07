@@ -1,14 +1,14 @@
-﻿using CarBook.Dto.Testimonial;
+﻿using CarBook.Dto.Banner;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
+using System.Net.Http;
 
-namespace CarBook.WebUI.ViewComponents.TestimonialViewCompenents
+namespace CarBook.WebUI.ViewComponents.DefaultViewComponents
 {
-    public class _TestimonialComponentPartial : ViewComponent
+    public class _DefaultCoverUILayoutComponentPartial : ViewComponent
     {
         private readonly IHttpClientFactory _httpClientFactory;
-
-        public _TestimonialComponentPartial(IHttpClientFactory httpClientFactory)
+        public _DefaultCoverUILayoutComponentPartial(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         }
@@ -16,18 +16,16 @@ namespace CarBook.WebUI.ViewComponents.TestimonialViewCompenents
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7157/api/Testimonials/GetAllTestimonial");
+            var responseMessage = await client.GetAsync("https://localhost:7157/api/Banners/GetAllBanner");
             if (responseMessage.IsSuccessStatusCode)
             {
                 var data = await responseMessage.Content.ReadAsStringAsync();
                 JObject jsonObject = JObject.Parse(data);
-                JArray testimonialArray = (JArray)jsonObject["testimonials"];
-                var values = testimonialArray.ToObject<List<ResultTestimonialDto>>();
+                JArray bannerArray = (JArray)jsonObject["banners"];
+                var values = bannerArray.ToObject<List<ResultBannerDto>>();
                 return View(values);
             }
             return View();
-
-
         }
     }
 }

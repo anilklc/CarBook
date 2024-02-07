@@ -21,35 +21,35 @@ namespace CarBook.API.Controllers
         }
 
         [HttpGet("[action]")]
-        public async Task<IActionResult> GetAllAbout()
+        public async Task<IActionResult> GetAllCategory()
         {
             GetAllCategoryQueryResponse response = await _mediator.Send(new GetAllCategoryQueryRequest());
             return Ok(response);
         }
 
         [HttpGet("{Id}")]
-        public async Task<IActionResult> GetByIdAbout([FromRoute] GetByIdCategoryQueryRequest request)
+        public async Task<IActionResult> GetByIdCategory([FromRoute] GetByIdCategoryQueryRequest request)
         {
             GetByIdCategoryQueryResponse response = await _mediator.Send(request);
             return Ok(response);
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> CreateAbout([FromQuery] CreateCategoryCommandRequest request)
+        public async Task<IActionResult> CreateCategory([FromQuery] CreateCategoryCommandRequest request)
         {
             CreateCategoryCommandResponse response = await _mediator.Send(request);
             return Ok(response);
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> UpdateAbout([FromQuery] UpdateCategoryCommandRequest request)
+        public async Task<IActionResult> UpdateCategory([FromQuery] UpdateCategoryCommandRequest request)
         {
             UpdateCategoryCommandResponse response = await _mediator.Send(request);
             return Ok(response);
         }
 
         [HttpDelete("{Id}")]
-        public async Task<IActionResult> RemoveAbout([FromRoute] RemoveCategoryCommandRequest request)
+        public async Task<IActionResult> RemoveCategory([FromRoute] RemoveCategoryCommandRequest request)
         {
             RemoveCategoryCommandResponse response = await _mediator.Send(request);
             return Ok(response);
