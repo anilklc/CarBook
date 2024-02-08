@@ -16,6 +16,9 @@ namespace CarBook.Application.Mapping
             CreateMap<Car, CarAndBrandDto>();
             CreateMap<Brand, CarAndBrandDto>().ForMember(dest => dest.BrandName, opt => opt.MapFrom(src => src.Name))
                     .ForMember(dest => dest.BrandID, opt => opt.MapFrom(src => src.Id));
+            CreateMap<Blog, BlogAndAuthorDto>();
+            CreateMap<Author, BlogAndAuthorDto>().ForMember(dest => dest.AuthorName, opt => opt.MapFrom(src => src.Name))
+                    .ForMember(dest => dest.AuthorID, opt => opt.MapFrom(src => src.Id));
         }
         
     }

@@ -44,7 +44,10 @@ namespace CarBook.Persistence
             services.AddScoped<ISocialMediaWriteRepository, SocialMediaWriteRepository>();
             services.AddScoped<ITestimonialReadRepository, TestimonialReadRepository>();
             services.AddScoped<ITestimonialWriteRepository, TestimonialWriteRepository>();
-            
+            services.AddScoped<IAuthorReadRepository, AuthorReadRepository>();
+            services.AddScoped<IAuthorWriteRepository, AuthorWriteRepository>();
+            services.AddScoped<IBlogReadRepository, BlogReadRepository>();
+            services.AddScoped<IBlogWriteRepository, BlogWriteRepository>();
         }
     }
 }
