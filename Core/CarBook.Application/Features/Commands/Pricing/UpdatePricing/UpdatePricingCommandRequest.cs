@@ -7,7 +7,6 @@ namespace CarBook.Application.Features.Commands.Pricing.UpdatePricing
     {
         public string Id { get; set; }
         public string Name { get; set; }
-        public List<CarPricing> CarPricings { get; set; }
 
     }
 }

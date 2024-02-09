@@ -22,7 +22,6 @@ namespace CarBook.Application.Features.Commands.Category.CreateCategory
             await _categoryWriteRepository.AddAsync(new()
             {
                 Name = request.Name,
-                Blogs = request.Blogs,
             });
             await _categoryWriteRepository.SaveAsync();
             return new();

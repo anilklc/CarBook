@@ -23,7 +23,6 @@ namespace CarBook.Application.Features.Commands.Brand.UpdateBrand
         {
             var brand = await _brandReadRepository.GetByIdAsync(request.Id);
             brand.Name = request.Name;
-            brand.Cars = request.Cars;
             await _brandWriteRepository.SaveAsync();
             return new();
 

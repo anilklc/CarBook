@@ -21,7 +21,6 @@ namespace CarBook.Application.Features.Commands.Feature.CreateFeature
         {
             await _featureWriteRepository.AddAsync(new()
             {
-                CarFeatures = request.CarFeatures,
                 Name = request.Name,
             });
             await _featureWriteRepository.SaveAsync();

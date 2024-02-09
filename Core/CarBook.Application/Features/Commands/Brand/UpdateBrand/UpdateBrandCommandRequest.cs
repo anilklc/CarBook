@@ -6,6 +6,5 @@ namespace CarBook.Application.Features.Commands.Brand.UpdateBrand
     {
         public string Id { get; set; }
         public string Name { get; set; }
-        public List<Domain.Entities.Car> Cars { get; set; }
     }
 }

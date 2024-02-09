@@ -22,7 +22,6 @@ namespace CarBook.Application.Features.Commands.Pricing.CreatePricing
             await _pricingWriteRepository.AddAsync(new()
             {
                 Name = request.Name,
-                CarPricings = request.CarPricings,
             });
             await _pricingWriteRepository.SaveAsync();
             return new();

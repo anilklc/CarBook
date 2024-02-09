@@ -22,19 +22,15 @@ namespace CarBook.Application.Features.Commands.Car.CreateCar
         {
             await _carWriteRepository.AddAsync(new ()
             {
-                
-                CarDescriptions = request.CarDescriptions,
-                CarPricings = request.CarPricings,
+                 
                 Transmission = request.Transmission,
                 Luggage = request.Luggage,
                 BigImageUrl = request.BigImageUrl,
-                Brand = request.Brand,
                 CoverImageUrl = request.CoverImageUrl,
                 Fuel = request.Fuel,
                 Km = request.Km,
                 Model = request.Model,
                 BrandID = request.BrandID,
-                CarFeatures = request.CarFeatures,
                 Seat = request.Seat,
              });
             await _carWriteRepository.SaveAsync();

@@ -8,7 +8,6 @@ namespace CarBook.Application.Features.Commands.Feature.UpdateFeature
     {
         public string Id { get; set; }
         public string Name { get; set; }
-        public List<CarFeature> CarFeatures { get; set; }
 
     }
 }

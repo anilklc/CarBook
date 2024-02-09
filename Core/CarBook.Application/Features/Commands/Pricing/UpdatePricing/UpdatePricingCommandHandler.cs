@@ -25,7 +25,6 @@ namespace CarBook.Application.Features.Commands.Feature.UpdateFeature
         {
             var pricing = await _pricingReadRepository.GetByIdAsync(request.Id);
             pricing.Name = request.Name;
-            pricing.CarPricings = request.CarPricings;
             await _pricingWriteRepository.SaveAsync();
             return new();
 

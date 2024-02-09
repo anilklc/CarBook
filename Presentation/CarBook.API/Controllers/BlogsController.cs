@@ -1,11 +1,10 @@
-﻿using CarBook.Application.Features.Commands.About.UpdateAbout;
-using CarBook.Application.Features.Commands.Blog.CreateBlog;
+﻿using CarBook.Application.Features.Commands.Blog.CreateBlog;
 using CarBook.Application.Features.Commands.Blog.RemoveBlog;
 using CarBook.Application.Features.Commands.Blog.UpdateBlog;
 using CarBook.Application.Features.Queries.Blog.GetAllBlog;
+using CarBook.Application.Features.Queries.Blog.GetBlogWithAuthor;
 using CarBook.Application.Features.Queries.Blog.GetByIdBlog;
 using CarBook.Application.Features.Queries.Blog.GetLastThreeBlog;
-using CarBook.Application.Features.Queries.Car.GetLastFiveCar;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -62,6 +61,13 @@ namespace CarBook.API.Controllers
         public async Task<IActionResult> GetLastThreeBlog()
         {
             GetLastThreeBlogQueryResponse response = await _mediator.Send(new GetLastThreeBlogQueryRequest());
+            return Ok(response);
+        }
+
+        [HttpGet("[action]")]
+        public async Task<IActionResult> GetBlogWithAuthor()
+        {
+            GetBlogWithAuthorQueryResponse response = await _mediator.Send(new GetBlogWithAuthorQueryRequest());
             return Ok(response);
         }
     }

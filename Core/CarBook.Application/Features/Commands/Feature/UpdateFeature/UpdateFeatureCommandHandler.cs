@@ -24,7 +24,6 @@ namespace CarBook.Application.Features.Commands.Feature.UpdateFeature
         {
             var feature = await _featureReadRepository.GetByIdAsync(request.Id);
             feature.Name = request.Name;
-            feature.CarFeatures = request.CarFeatures;
             await _featureWriteRepository.SaveAsync();
             return new();
 

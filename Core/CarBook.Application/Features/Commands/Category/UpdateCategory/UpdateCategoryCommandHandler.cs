@@ -21,7 +21,6 @@ namespace CarBook.Application.Features.Commands.Category.UpdateCategory
         public async Task<UpdateCategoryCommandResponse> Handle(UpdateCategoryCommandRequest request, CancellationToken cancellationToken)
         {
             var category = await _categoryReadRepository.GetByIdAsync(request.Id);
-            category.Blogs = request.Blogs;
             category.Name = request.Name;
             await _categoryWriteRepository.SaveAsync();
             return new();

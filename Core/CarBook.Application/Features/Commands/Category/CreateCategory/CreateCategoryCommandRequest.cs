@@ -6,6 +6,5 @@ namespace CarBook.Application.Features.Commands.Category.CreateCategory
     public class CreateCategoryCommandRequest : IRequest<CreateCategoryCommandResponse>
     {
         public string Name { get; set; }
-        public List<Domain.Entities.Blog> Blogs { get; set; }
     }
 }

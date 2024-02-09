@@ -9,6 +9,8 @@ using CarBook.Application.Features.Queries.Banner.GetByIdBanner;
 using CarBook.Application.Features.Queries.Car.GetAllCar;
 using CarBook.Application.Features.Queries.Car.GetByIdCar;
 using CarBook.Application.Features.Queries.Car.GetCarWithBrand;
+using CarBook.Application.Features.Queries.Car.GetCarWithPricing;
+using CarBook.Application.Features.Queries.Car.GetCarWithPricingDay;
 using CarBook.Application.Features.Queries.Car.GetLastFiveCar;
 using CarBook.Application.Features.Queries.Feature.GetAllFeature;
 using MediatR;
@@ -73,6 +75,20 @@ namespace CarBook.API.Controllers
         public async Task<IActionResult> GetLastFiveCarWithBrand()
         {
             GetLastFiveCarQueryResponse response = await _mediator.Send(new GetLastFiveCarQueryRequest());
+            return Ok(response);
+        }
+
+        [HttpGet("[action]")]
+        public async Task<IActionResult> GetCarWithPricing()
+        {
+            GetCarWithPricingQueryResponse response = await _mediator.Send(new GetCarWithPricingQueryRequest());
+            return Ok(response);
+        }
+
+        [HttpGet("[action]")]
+        public async Task<IActionResult> GetCarWithPricingDay()
+        {
+            GetCarWithPricingDayQueryResponse response = await _mediator.Send(new GetCarWithPricingDayQueryRequest());
             return Ok(response);
         }
     }

@@ -24,7 +24,6 @@ namespace CarBook.Application.Features.Commands.Author.UpdateAuthor
         {
             var author = await _authorReadRepository.GetByIdAsync(request.Id);
             author.Description = request.Description;
-            author.Blogs = request.Blogs;
             author.Name = request.Name;
             author.ImageUrl = request.ImageUrl;
             await _authorWriteRepository.SaveAsync();

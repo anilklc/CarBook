@@ -48,6 +48,8 @@ namespace CarBook.Persistence
             services.AddScoped<IAuthorWriteRepository, AuthorWriteRepository>();
             services.AddScoped<IBlogReadRepository, BlogReadRepository>();
             services.AddScoped<IBlogWriteRepository, BlogWriteRepository>();
+            services.AddScoped<ICarPricingReadRepository, CarPricingReadRepository>();
+            services.AddScoped<ICarPricingWriteRepository, CarPricingWriteRepository>();
         }
     }
 }

@@ -21,7 +21,6 @@ namespace CarBook.Application.Features.Commands.Author.CreateAuthor
         {
             await _authorWriteRepository.AddAsync(new()
             {
-                Blogs = request.Blogs,
                 Description = request.Description,
                 ImageUrl = request.ImageUrl,
                 Name = request.Name,

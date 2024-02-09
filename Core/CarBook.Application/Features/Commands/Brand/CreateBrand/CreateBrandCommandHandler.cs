@@ -22,7 +22,6 @@ namespace CarBook.Application.Features.Commands.Brand.CreateBrand
             await _brandWriteRepository.AddAsync(new()
             {
                 Name = request.Name,
-                Cars = request.Cars,
             });
             await _brandWriteRepository.SaveAsync();
             return new();

@@ -1,4 +1,5 @@
-﻿using CarBook.Dto.CarWithBrand;
+﻿using CarBook.Dto.CarPricing;
+using CarBook.Dto.CarWithBrand;
 using CarBook.Dto.Service;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
@@ -18,13 +19,13 @@ namespace CarBook.WebUI.Controllers
         public async Task<IActionResult> Index()
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7157/api/Cars/GetAllCarWithBrand");
+            var responseMessage = await client.GetAsync("https://localhost:7157/api/Cars/GetCarWithPricingDay");
             if (responseMessage.IsSuccessStatusCode)
             {
                 var data = await responseMessage.Content.ReadAsStringAsync();
                 JObject jsonObject = JObject.Parse(data);
-                JArray carAndBrandArray = (JArray)jsonObject["carAndBrandDto"];
-                var values = carAndBrandArray.ToObject<List<ResultCarWithBrandDto>>();
+                JArray carAndBrandArray = (JArray)jsonObject["carAndPricings"];
+                var values = carAndBrandArray.ToObject<List<ResultCarPricingDto>>();
                 return View(values);
             }
             return View();
