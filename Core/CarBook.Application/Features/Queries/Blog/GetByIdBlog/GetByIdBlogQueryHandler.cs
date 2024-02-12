@@ -28,6 +28,8 @@ namespace CarBook.Application.Features.Queries.Blog.GetByIdBlog
                 CategoryID = blog.CategoryID,
                 CoverImageUrl = blog.CoverImageUrl,
                 Title = blog.Title,
+                Description = blog.Description,
+                Id = blog.Id,
             };
         }
     }

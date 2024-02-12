@@ -21,6 +21,7 @@ namespace CarBook.Application.Features.Commands.Blog.CreateBlog
         {
             await _blogWriteRepository.AddAsync(new()
             {     
+                Description = request.Description,
                 AuthorID = request.AuthorID,
                 CoverImageUrl = request.CoverImageUrl,
                 CategoryID = request.CategoryID,

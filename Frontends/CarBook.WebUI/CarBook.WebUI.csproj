@@ -7,6 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="Views\Shared\Components\_BlogDetailsCategoryComponentPartial\Default.cshtml" />
+    <None Include="Views\Shared\Components\_BlogDetailsMainComponentPartial\Default.cshtml" />
     <None Include="wwwroot\carbook-master\.DS_Store" />
     <None Include="wwwroot\carbook-master\css\.DS_Store" />
     <None Include="wwwroot\carbook-master\css\bootstrap\.DS_Store" />

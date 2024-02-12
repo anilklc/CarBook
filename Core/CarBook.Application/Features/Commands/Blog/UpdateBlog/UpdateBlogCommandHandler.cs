@@ -24,6 +24,7 @@ namespace CarBook.Application.Features.Commands.Blog.UpdateBlog
         {
             var blog = await _blogReadRepository.GetByIdAsync(request.Id);
             blog.Title = request.Title;
+            blog.Description = request.Description;
             blog.AuthorID = request.AuthorID;
             blog.CategoryID = request.CategoryID;
             blog.CoverImageUrl = request.CoverImageUrl;
