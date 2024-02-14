@@ -2,6 +2,7 @@
 using CarBook.Dto.TagCloud;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace CarBook.WebUI.ViewComponents.BlogViewComponents
 {
@@ -18,10 +19,13 @@ namespace CarBook.WebUI.ViewComponents.BlogViewComponents
         {
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.GetAsync($"https://localhost:7157/api/TagClouds/GetAllTagCloudById" + Id);
+           
             if (responseMessage.IsSuccessStatusCode)
             {
                 var data = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<GetByBlogIdTagCloudDto>(data);
+                JObject jsonObject = JObject.Parse(data);
+                JArray tagCloudArray = (JArray)jsonObject["tagClouds"];
+                var values = tagCloudArray.ToObject<List<GetByBlogIdTagCloudDto>>();
                 return View(values);
             }
             return View();

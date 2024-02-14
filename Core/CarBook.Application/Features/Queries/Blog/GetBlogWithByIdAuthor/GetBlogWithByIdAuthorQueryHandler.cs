@@ -8,16 +8,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarBook.Application.Features.Queries.Blog.GetBlogWithAuthor
+namespace CarBook.Application.Features.Queries.Blog.GetBlogWithByIdAuthor
 {
-    public class GetBlogWithAuthorQueryHandler : IRequestHandler<GetBlogWithAuthorQueryRequest, GetBlogWithAuthorQueryResponse>
+    public class GetBlogWithByIdAuthorQueryHandler : IRequestHandler<GetBlogWithByIdAuthorQueryRequest, GetBlogWithByIdAuthorQueryResponse>
     {
         private readonly IBlogReadRepository _blogReadRepository;
         private readonly IAuthorReadRepository _authorReadRepository;
         private readonly ICategoryReadRepository _categoryReadRepository;
         private readonly IMapper _mapper;
 
-        public GetBlogWithAuthorQueryHandler(IBlogReadRepository blogReadRepository, IAuthorReadRepository authorReadRepository, IMapper mapper, ICategoryReadRepository categoryReadRepository)
+        public GetBlogWithByIdAuthorQueryHandler(IBlogReadRepository blogReadRepository, IAuthorReadRepository authorReadRepository, IMapper mapper, ICategoryReadRepository categoryReadRepository)
         {
             _blogReadRepository = blogReadRepository;
             _authorReadRepository = authorReadRepository;
@@ -25,9 +25,10 @@ namespace CarBook.Application.Features.Queries.Blog.GetBlogWithAuthor
             _categoryReadRepository = categoryReadRepository;
         }
 
-        public async Task<GetBlogWithAuthorQueryResponse> Handle(GetBlogWithAuthorQueryRequest request, CancellationToken cancellationToken)
+        public async Task<GetBlogWithByIdAuthorQueryResponse> Handle(GetBlogWithByIdAuthorQueryRequest request, CancellationToken cancellationToken)
         {
-            var blogs = _blogReadRepository.GetAll(false).OrderByDescending(b => b.Id).ToList();
+
+            var blogs = _blogReadRepository.GetAll(false).Where(a=>a.AuthorID==Guid.Parse(request.AuthorId)).OrderByDescending(b => b.Id).ToList();
             var mapper = _mapper.Map<List<BlogAndAuthorDto>>(blogs);
 
             foreach (var blogAndAuthorDto in mapper)
@@ -39,7 +40,7 @@ namespace CarBook.Application.Features.Queries.Blog.GetBlogWithAuthor
                 blogAndAuthorDto.AuthorImageUrl = author.FirstOrDefault(b => b.Id == blogAndAuthorDto.AuthorID).ImageUrl;
                 blogAndAuthorDto.AuthorDescription = author.FirstOrDefault(b => b.Id == blogAndAuthorDto.AuthorID).Description;
             }
-
+            
             return new()
             {
                 BlogAndAuthor = mapper,

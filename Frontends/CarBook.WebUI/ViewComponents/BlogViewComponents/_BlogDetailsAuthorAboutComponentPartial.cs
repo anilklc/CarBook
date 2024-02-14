@@ -2,6 +2,8 @@
 using Newtonsoft.Json;
 using CarBook.Dto.Author;
 using CarBook.Dto.TagCloud;
+using CarBook.Dto.Category;
+using Newtonsoft.Json.Linq;
 
 namespace UdemyCarBook.WebUI.ViewComponents.BlogViewComponents
 {
@@ -12,15 +14,17 @@ namespace UdemyCarBook.WebUI.ViewComponents.BlogViewComponents
         {
             _httpClientFactory = httpClientFactory;
         }
-        public async Task<IViewComponentResult> InvokeAsync(int id)
+        public async Task<IViewComponentResult> InvokeAsync(string Id)
         {
-            ViewBag.blogid = id;
+            ViewBag.Id = Id;
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync($"https://localhost:7157/api/Blogs/GetBlogByAuthorId?id=" + id);
+            var responseMessage = await client.GetAsync($"https://localhost:7157/api/Blogs/GetBlogWithByIdAuthor" + Id);
             if (responseMessage.IsSuccessStatusCode)
             {
-                var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<GetAuthorByBlogAuthorIdDto>>(jsonData);
+                var data = await responseMessage.Content.ReadAsStringAsync();
+                JObject jsonObject = JObject.Parse(data);
+                JArray categoriesArray = (JArray)jsonObject["blogAndAuthor"];
+                var values = categoriesArray.ToObject<List<GetAuthorByBlogAuthorIdDto>>();
                 return View(values);
             }
             return View();
