@@ -44,7 +44,7 @@ namespace CarBook.API.Controllers
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> CreateCar([FromQuery] CreateCarCommandRequest request)
+        public async Task<IActionResult> CreateCar([FromBody] CreateCarCommandRequest request)
         {
             CreateCarCommandResponse response = await _mediator.Send(request);
             return Ok(response);
