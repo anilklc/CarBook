@@ -27,7 +27,7 @@ namespace CarBook.API.Controllers
             return Ok(response);
         }
 
-        [HttpGet("{Id}")]
+        [HttpGet("[action]/{Id}")]
         public async Task<IActionResult> GetByIdBrand([FromRoute] GetByIdBrandQueryRequest request)
         {
             GetByIdBrandQueryResponse response = await _mediator.Send(request);
@@ -35,22 +35,23 @@ namespace CarBook.API.Controllers
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> CreateBrand([FromQuery] CreateBrandCommandRequest request)
+        public async Task<IActionResult> CreateBrand([FromBody] CreateBrandCommandRequest request)
         {
             CreateBrandCommandResponse response = await _mediator.Send(request);
             return Ok(response);
         }
 
-        [HttpPost("[action]")]
-        public async Task<IActionResult> UpdateBrand([FromQuery] UpdateBrandCommandRequest request)
+        [HttpPut("[action]")]
+        public async Task<IActionResult> UpdateBrand([FromBody] UpdateBrandCommandRequest request)
         {
             UpdateBrandCommandResponse response = await _mediator.Send(request);
             return Ok(response);
         }
 
-        [HttpDelete("{Id}")]
-        public async Task<IActionResult> RemoveBrand([FromRoute] RemoveBrandCommandRequest request)
+        [HttpDelete("[action]/{Id}")]
+        public async Task<IActionResult> RemoveBrand(string Id)
         {
+            RemoveBrandCommandRequest request = new RemoveBrandCommandRequest { Id = Id };
             RemoveBrandCommandResponse response = await _mediator.Send(request);
             return Ok(response);
         }

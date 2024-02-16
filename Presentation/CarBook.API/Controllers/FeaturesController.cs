@@ -1,11 +1,6 @@
-﻿using CarBook.Application.Features.Commands.About.CreateAbout;
-using CarBook.Application.Features.Commands.About.RemoveAbout;
-using CarBook.Application.Features.Commands.About.UpdateAbout;
-using CarBook.Application.Features.Commands.Feature.CreateFeature;
+﻿using CarBook.Application.Features.Commands.Feature.CreateFeature;
 using CarBook.Application.Features.Commands.Feature.RemoveFeature;
 using CarBook.Application.Features.Commands.Feature.UpdateFeature;
-using CarBook.Application.Features.Queries.About.GetAllAbout;
-using CarBook.Application.Features.Queries.About.GetByIdAbout;
 using CarBook.Application.Features.Queries.Feature.GetAllFeature;
 using CarBook.Application.Features.Queries.Feature.GetByIdFeature;
 using MediatR;
@@ -32,7 +27,7 @@ namespace CarBook.API.Controllers
             return Ok(response);
         }
 
-        [HttpGet("{Id}")]
+        [HttpGet("[action]/{Id}")]
         public async Task<IActionResult> GetByIdFeature([FromRoute] GetByIdFeatureQueryRequest request)
         {
             GetByIdFeatureQueryResponse response = await _mediator.Send(request);
@@ -40,22 +35,23 @@ namespace CarBook.API.Controllers
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> CreateFeature([FromQuery] CreateFeatureCommandRequest request)
+        public async Task<IActionResult> CreateFeature([FromBody] CreateFeatureCommandRequest request)
         {
             CreateFeatureCommandResponse response = await _mediator.Send(request);
             return Ok(response);
         }
 
-        [HttpPost("[action]")]
-        public async Task<IActionResult> UpdateFeature([FromQuery] UpdateFeatureCommandRequest request)
+        [HttpPut("[action]")]
+        public async Task<IActionResult> UpdateFeature([FromBody] UpdateFeatureCommandRequest request)
         {
             UpdateFeatureCommandResponse response = await _mediator.Send(request);
             return Ok(response);
         }
 
-        [HttpDelete("{Id}")]
-        public async Task<IActionResult> RemoveFeature([FromRoute] RemoveFeatureCommandRequest request)
+        [HttpDelete("[action]/{Id}")]
+        public async Task<IActionResult> RemoveFeature(string Id)
         {
+            RemoveFeatureCommandRequest request = new RemoveFeatureCommandRequest { Id = Id };
             RemoveFeatureCommandResponse response = await _mediator.Send(request);
             return Ok(response);
         }

@@ -1,7 +1,6 @@
-﻿@model CreateCarDto
-
+﻿@model UpdateCarDto
 @{
-    ViewData["Title"] = "CreateCar";
+    ViewData["Title"] = "UpdateCar";
     Layout = "~/Views/AdminLayout/Index.cshtml";
 }
 
@@ -11,13 +10,14 @@
             <div class="col-xl-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Create Car</h4>
+                        <h4 class="card-title">Update Car</h4>
                         <p class="card-subtitle mb-4">Please fill in the information about the vehicle completely.</p>
 
                         <form method="post">
+                            <input type="hidden" asp-for="Id"/>
                             <div class="form-group">
                                 <label for="exampleInputBrand">Brand</label>
-                                @Html.DropDownListFor(x=>x.BrandID,(List<SelectListItem>)ViewBag.BrandValues,new{@class="form-control"})
+                                @Html.DropDownListFor(x => x.BrandID, (List<SelectListItem>)ViewBag.BrandValues, new { @class = "form-control" })
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputModel">Model</label>
@@ -51,8 +51,8 @@
                                 <label for="exampleInputBigImageUrl">Big Image</label>
                                 <input type="text" class="form-control" id="exampleInputBigImageUrl" asp-for="BigImageUrl" placeholder="BigImageUrl">
                             </div>
-                            
-                            <button type="submit" class="btn btn-primary waves-effect waves-light">Create Car</button>
+
+                            <button type="submit" class="btn btn-primary waves-effect waves-light">Update Car</button>
                         </form>
 
                     </div>
@@ -61,3 +61,4 @@
         </div>
     </div>
 </div>
+

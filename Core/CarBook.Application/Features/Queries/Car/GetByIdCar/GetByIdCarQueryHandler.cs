@@ -20,7 +20,20 @@ namespace CarBook.Application.Features.Queries.Car.GetByIdCar
         public async Task<GetByIdCarQueryResponse> Handle(GetByIdCarQueryRequest request, CancellationToken cancellationToken)
         {
             var car = await _carReadRepository.GetByIdAsync(request.Id);
-            return new();
+            return new()
+            {
+                Id = car.Id.ToString(),
+                BigImageUrl = car.BigImageUrl,
+                BrandID = car.BrandID,
+                CoverImageUrl = car.CoverImageUrl,
+                Fuel = car.Fuel,
+                Km = car.Km,
+                Luggage = car.Luggage,
+                Model = car.Model,
+                Seat = car.Seat,
+                Transmission = car.Transmission,
+                  
+            };
         }
     }
 }

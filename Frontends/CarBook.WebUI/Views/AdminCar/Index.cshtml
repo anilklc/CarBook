@@ -29,6 +29,8 @@
                                         <th>Remove</th>
                                         <th>Update</th>
                                         <th>İnfo</th>
+                                        <th>View Website</th>
+                                        <th>Pricing İnfo</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -41,8 +43,10 @@
                                         <td>@item.Transmission</td>
                                         <td>@item.Km</td>
                                         <td><a href="/AdminCar/RemoveCar/@item.Id" class="btn btn-outline-danger">Remove</a></td>
-                                        <td><a href="/AdminCar/Update/@item.Id" class="btn btn-outline-success">Update</a></td>
-                                        <td><a href="/CarList/CarDetail/@item.Id" class="btn btn-outline-dark">İnfo</a></td>
+                                        <td><a href="/AdminCar/UpdateCar/@item.Id" class="btn btn-outline-success">Update</a></td>
+                                        <td><a href="/CarList/CarDetail/@item.Id" class="btn btn-outline-info">İnfo</a></td>
+                                        <td><a href="/CarList/CarDetail/@item.Id" class="btn btn-outline-secondary">View Website</a></td>
+                                        <td><a href="/CarList/CarDetail/@item.Id" class="btn btn-outline-primary">Pricing İnfo</a></td>
                                     </tr>
                                     } 
                                 </tbody>
