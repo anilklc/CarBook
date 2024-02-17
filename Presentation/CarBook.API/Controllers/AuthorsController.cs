@@ -27,7 +27,7 @@ namespace CarBook.API.Controllers
             return Ok(response);
         }
 
-        [HttpGet("{Id}")]
+        [HttpGet("[action]/{Id}")]
         public async Task<IActionResult> GetByIdAuthor([FromRoute] GetByIdAuthorQueryRequest request)
         {
             GetByIdAuthorQueryResponse response = await _mediator.Send(request);
@@ -35,22 +35,23 @@ namespace CarBook.API.Controllers
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> CreateAuthor([FromQuery] CreateAuthorCommandRequest request)
+        public async Task<IActionResult> CreateAuthor([FromBody] CreateAuthorCommandRequest request)
         {
             CreateAuthorCommandResponse response = await _mediator.Send(request);
             return Ok(response);
         }
 
-        [HttpPost("[action]")]
-        public async Task<IActionResult> UpdateAuthor([FromQuery] UpdateAuthorCommandRequest request)
+        [HttpPut("[action]")]
+        public async Task<IActionResult> UpdateAuthor([FromBody] UpdateAuthorCommandRequest request)
         {
             UpdateAuthorCommandResponse response = await _mediator.Send(request);
             return Ok(response);
         }
 
-        [HttpDelete("{Id}")]
-        public async Task<IActionResult> RemoveAuthor([FromRoute] RemoveAuthorCommandRequest request)
+        [HttpDelete("[action]/{Id}")]
+        public async Task<IActionResult> RemoveAuthor(string Id)
         {
+            RemoveAuthorCommandRequest request = new RemoveAuthorCommandRequest { Id = Id };
             RemoveAuthorCommandResponse response = await _mediator.Send(request);
             return Ok(response);
         }

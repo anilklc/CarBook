@@ -27,7 +27,7 @@ namespace CarBook.API.Controllers
             return Ok(response);
         }
 
-        [HttpGet("{Id}")]
+        [HttpGet("[action]/{Id}")]
         public async Task<IActionResult> GetByIdBanner([FromRoute] GetByIdBannerQueryRequest request)
         {
             GetByIdBannerQueryResponse response = await _mediator.Send(request);
@@ -35,22 +35,23 @@ namespace CarBook.API.Controllers
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> CreateBanner([FromQuery] CreateBannerCommandRequest request)
+        public async Task<IActionResult> CreateBanner([FromBody] CreateBannerCommandRequest request)
         {
             CreateBannerCommandResponse response = await _mediator.Send(request);
             return Ok(response);
         }
 
-        [HttpPost("[action]")]
-        public async Task<IActionResult> UpdateBanner([FromQuery] UpdateBannerCommandRequest request)
+        [HttpPut("[action]")]
+        public async Task<IActionResult> UpdateBanner([FromBody] UpdateBannerCommandRequest request)
         {
             UpdateBannerCommandResponse response = await _mediator.Send(request);
             return Ok(response);
         }
 
-        [HttpDelete("{Id}")]
-        public async Task<IActionResult> RemoveBanner([FromRoute] RemoveBannerCommandRequest request)
+        [HttpDelete("[action]/{Id}")]
+        public async Task<IActionResult> RemoveBanner(string Id)
         {
+            RemoveBannerCommandRequest request = new RemoveBannerCommandRequest { Id = Id };
             RemoveBannerCommandResponse response = await _mediator.Send(request);
             return Ok(response);
         }

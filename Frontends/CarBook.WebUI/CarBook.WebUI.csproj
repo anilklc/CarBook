@@ -32,4 +32,9 @@
     <ProjectReference Include="..\CarBook.DTOs\CarBook.Dto.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Models\" />
+  </ItemGroup>
+
 </Project>

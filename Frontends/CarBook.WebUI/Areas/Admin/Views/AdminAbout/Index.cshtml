@@ -1,0 +1,65 @@
+﻿@model List<ResultAboutDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">
+                           About Area
+                        </h4>
+                        <p class="card-subtitle mb-4">
+                            About area edit page.
+                        </p>
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Description</th>
+                                        <th>Image</th>
+                                        <th>Remove</th>
+                                        <th>Update</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@item.Title</td>
+                                            <td>@item.Description</td>
+                                            <td><img src="@item.ImageUrl" width="200" height="200"></td>
+                                            <td><a href="/Admin/AdminAbout/RemoveAbout/@item.Id" class="btn btn-outline-danger">Remove</a></td>
+                                            <td><a href="/Admin/AdminAbout/UpdateAbout/@item.Id" class="btn btn-outline-success">Update</a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            <td><a href="/Admin/AdminAbout/CreateAbout/" class="btn btn-outline-primary">Create About</a></td>
+                        </div>
+
+                    </div>
+                    <!-- end card-body-->
+                </div>
+                <!-- end card -->
+
+            </div>
+            <!-- end col -->
+
+
+
+        </div>
+        <!-- end col -->
+    </div>
+
+    <!-- end page title -->
+
+</div> <!-- container-fluid -->
+
