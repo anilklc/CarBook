@@ -1,0 +1,74 @@
+﻿@model List<ResultBlogWithAuthorDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">
+                           Blog List
+                        </h4>
+                        <p class="card-subtitle mb-4">
+                            Blog list edit page.
+                        </p>
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Title</th>
+                                        <th>Description</th>
+                                        <th>Author</th>
+                                        <th>Category</th>
+                                        <th>Created Date</th>
+                                        <th>Remove</th>
+                                        <th>Open Blog</th>
+                                        <th>Comment</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        count++;
+                                        <tr>
+                                            <td>@count</td>
+                                            <td>@item.Title</td>
+                                            <td>@item.Description</td>
+                                            <td>@item.AuthorName</td>
+                                            <td>@item.CategoryName</td>
+                                            <td>@item.CreatedDate</td>
+                                            <td><a href="/Admin/AdminBlog/RemoveBlog/@item.Id" class="btn btn-outline-danger">Remove</a></td>
+                                            <td><a href="/Blog/BlogDetail/@item.Id" class="btn btn-outline-secondary">Open Blog</a></td>
+                                            <td><a href="/Admin/AdminComment/Index/@item.Id" class="btn btn-outline-primary">Comment</a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                    <!-- end card-body-->
+                </div>
+                <!-- end card -->
+
+            </div>
+            <!-- end col -->
+
+
+
+        </div>
+        <!-- end col -->
+    </div>
+
+    <!-- end page title -->
+
+</div> <!-- container-fluid -->
+

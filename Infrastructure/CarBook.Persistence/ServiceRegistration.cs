@@ -52,6 +52,8 @@ namespace CarBook.Persistence
             services.AddScoped<ICarPricingWriteRepository, CarPricingWriteRepository>();
             services.AddScoped<ITagCloudReadRepository, TagCloudReadRepository>();
             services.AddScoped<ITagCloudWriteRepository, TagCloudWriteRepository>();
+            services.AddScoped<ICommentReadRepository, CommentReadRepository>();
+            services.AddScoped<ICommentWriteRepository, CommentWriteRepository>();
         }
     }
 }

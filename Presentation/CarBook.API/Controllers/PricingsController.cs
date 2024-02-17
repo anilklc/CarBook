@@ -32,7 +32,7 @@ namespace CarBook.API.Controllers
             return Ok(response);
         }
 
-        [HttpGet("{Id}")]
+        [HttpGet("[action]/{Id}")]
         public async Task<IActionResult> GetByIdPricing([FromRoute] GetByIdPricingQueryRequest request)
         {
             GetByIdPricingQueryResponse response = await _mediator.Send(request);
@@ -40,22 +40,23 @@ namespace CarBook.API.Controllers
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> CreatePricing([FromQuery] CreatePricingCommandRequest request)
+        public async Task<IActionResult> CreatePricing([FromBody] CreatePricingCommandRequest request)
         {
             CreatePricingCommandResponse response = await _mediator.Send(request);
             return Ok(response);
         }
 
-        [HttpPost("[action]")]
-        public async Task<IActionResult> UpdatePricing([FromQuery] UpdatePricingCommandRequest request)
+        [HttpPut("[action]")]
+        public async Task<IActionResult> UpdatePricing([FromBody] UpdatePricingCommandRequest request)
         {
             UpdatePricingCommandResponse response = await _mediator.Send(request);
             return Ok(response);
         }
 
-        [HttpDelete("{Id}")]
-        public async Task<IActionResult> RemovePricing([FromRoute] RemovePricingCommandRequest request)
+        [HttpDelete("[action]/{Id}")]
+        public async Task<IActionResult> RemovePricing(string Id)
         {
+            RemovePricingCommandRequest request = new RemovePricingCommandRequest { Id = Id };
             RemovePricingCommandResponse response = await _mediator.Send(request);
             return Ok(response);
         }
