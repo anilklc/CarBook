@@ -27,7 +27,7 @@ namespace CarBook.API.Controllers
             return Ok(response);
         }
 
-        [HttpGet("{Id}")]
+        [HttpGet("[action]/{Id}")]
         public async Task<IActionResult> GetByIdLocation([FromRoute] GetByIdLocationQueryRequest request)
         {
             GetByIdLocationQueryResponse response = await _mediator.Send(request);
@@ -35,22 +35,23 @@ namespace CarBook.API.Controllers
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> CreateLocation([FromQuery] CreateLocationCommandRequest request)
+        public async Task<IActionResult> CreateLocation([FromBody] CreateLocationCommandRequest request)
         {
             CreateLocationCommandResponse response = await _mediator.Send(request);
             return Ok(response);
         }
 
-        [HttpPost("[action]")]
-        public async Task<IActionResult> UpdateLocation([FromQuery] UpdateLocationCommandRequest request)
+        [HttpPut("[action]")]
+        public async Task<IActionResult> UpdateLocation([FromBody] UpdateLocationCommandRequest request)
         {
             UpdateLocationCommandResponse response = await _mediator.Send(request);
             return Ok(response);
         }
 
-        [HttpDelete("{Id}")]
-        public async Task<IActionResult> RemoveLocation([FromRoute] RemoveLocationCommandRequest request)
+        [HttpDelete("[action]/{Id}")]
+        public async Task<IActionResult> RemoveLocation(string Id)
         {
+            RemoveLocationCommandRequest request = new RemoveLocationCommandRequest { Id =Id};
             RemoveLocationCommandResponse response = await _mediator.Send(request);
             return Ok(response);
         }

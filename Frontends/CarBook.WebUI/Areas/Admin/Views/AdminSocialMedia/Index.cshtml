@@ -1,0 +1,71 @@
+﻿@model List<ResultSocialMediaDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            Social Media Area
+                        </h4>
+                        <p class="card-subtitle mb-4">
+                            Social Media area edit page.
+                        </p>
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Name</th>
+                                        <th>Url</th>
+                                        <th>Icon</th>
+                                        <th>Remove</th>
+                                        <th>Update</th>
+                                        <th>Open</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        count++;
+                                        <tr>
+                                            <td>@count</td>
+                                            <td>@item.Name</td>
+                                            <td>@item.Url</td>
+                                            <td>@item.Icon</td>
+                                            <td><a href="/Admin/AdminSocialMedia/RemoveSocialMedia/@item.Id" class="btn btn-outline-danger">Remove</a></td>
+                                            <td><a href="/Admin/AdminSocialMedia/UpdateSocialMedia/@item.Id" class="btn btn-outline-success">Update</a></td>
+                                            <td><a href="@item.Url" target="_blank" class="btn btn-outline-success">Open</a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            <td><a href="/Admin/AdminSocialMedia/CreateSocialMedia/" class="btn btn-outline-primary">Create Social Media</a></td>
+                        </div>
+
+                    </div>
+                    <!-- end card-body-->
+                </div>
+                <!-- end card -->
+
+            </div>
+            <!-- end col -->
+
+
+
+        </div>
+        <!-- end col -->
+    </div>
+
+    <!-- end page title -->
+
+</div> <!-- container-fluid -->
+

@@ -27,7 +27,7 @@ namespace CarBook.API.Controllers
             return Ok(response);
         }
 
-        [HttpGet("{Id}")]
+        [HttpGet("[action]/{Id}")]
         public async Task<IActionResult> GetByIdSocialMedia([FromRoute] GetByIdSocialMediaQueryRequest request)
         {
             GetByIdSocialMediaQueryResponse response = await _mediator.Send(request);
@@ -35,22 +35,23 @@ namespace CarBook.API.Controllers
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> CreateSocialMedia([FromQuery] CreateSocialMediaCommandRequest request)
+        public async Task<IActionResult> CreateSocialMedia([FromBody] CreateSocialMediaCommandRequest request)
         {
             CreateSocialMediaCommandResponse response = await _mediator.Send(request);
             return Ok(response);
         }
 
-        [HttpPost("[action]")]
-        public async Task<IActionResult> UpdateSocialMedia([FromQuery] UpdateSocialMediaCommandRequest request)
+        [HttpPut("[action]")]
+        public async Task<IActionResult> UpdateSocialMedia([FromBody] UpdateSocialMediaCommandRequest request)
         {
             UpdateSocialMediaCommandResponse response = await _mediator.Send(request);
             return Ok(response);
         }
 
-        [HttpDelete("{Id}")]
-        public async Task<IActionResult> RemoveSocialMedia([FromRoute] RemoveSocialMediaCommandRequest request)
+        [HttpDelete("[action]/{Id}")]
+        public async Task<IActionResult> RemoveSocialMedia(string Id)
         {
+            RemoveSocialMediaCommandRequest request = new RemoveSocialMediaCommandRequest { Id = Id };
             RemoveSocialMediaCommandResponse response = await _mediator.Send(request);
             return Ok(response);
         }

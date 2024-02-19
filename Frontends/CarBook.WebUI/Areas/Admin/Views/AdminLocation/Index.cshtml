@@ -1,0 +1,66 @@
+﻿@model List<ResultLocationDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            Location Area
+                        </h4>
+                        <p class="card-subtitle mb-4">
+                            Location area edit page.
+                        </p>
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Name</th>
+                                        <th>Remove</th>
+                                        <th>Update</th>
+                                        <th>Go Map</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        count++;
+                                        <tr>
+                                            <td>@count</td>
+                                            <td>@item.Name</td>
+                                            <td><a href="/Admin/AdminLocation/RemoveLocation/@item.Id" class="btn btn-outline-danger">Remove</a></td>
+                                            <td><a href="/Admin/AdminLocation/UpdateLocation/@item.Id" class="btn btn-outline-success">Update</a></td>
+                                            <td><a href="/Admin/AdminLocation/LocationDetail/@item.Id" class="btn btn-outline-secondary">Go Map</a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            <td><a href="/Admin/AdminLocation/CreateLocation/" class="btn btn-outline-primary">Create Location</a></td>
+                        </div>
+
+                    </div>
+                    <!-- end card-body-->
+                </div>
+                <!-- end card -->
+
+            </div>
+            <!-- end col -->
+
+
+
+        </div>
+        <!-- end col -->
+    </div>
+
+    <!-- end page title -->
+
+</div> <!-- container-fluid -->

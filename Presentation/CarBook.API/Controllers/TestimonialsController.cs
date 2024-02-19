@@ -27,7 +27,7 @@ namespace CarBook.API.Controllers
             return Ok(response);
         }
 
-        [HttpGet("{Id}")]
+        [HttpGet("[action]/{Id}")]
         public async Task<IActionResult> GetByIdTestimonial([FromRoute] GetByIdTestimonialQueryRequest request)
         {
             GetByIdTestimonialQueryResponse response = await _mediator.Send(request);
@@ -35,22 +35,23 @@ namespace CarBook.API.Controllers
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> CreateTestimonial([FromQuery] CreateTestimonialCommandRequest request)
+        public async Task<IActionResult> CreateTestimonial([FromBody] CreateTestimonialCommandRequest request)
         {
             CreateTestimonialCommandResponse response = await _mediator.Send(request);
             return Ok(response);
         }
 
-        [HttpPost("[action]")]
-        public async Task<IActionResult> UpdateTestimonial([FromQuery] UpdateTestimonialCommandRequest request)
+        [HttpPut("[action]")]
+        public async Task<IActionResult> UpdateTestimonial([FromBody] UpdateTestimonialCommandRequest request)
         {
             UpdateTestimonialCommandResponse response = await _mediator.Send(request);
             return Ok(response);
         }
 
-        [HttpDelete("{Id}")]
-        public async Task<IActionResult> RemoveTestimonial([FromRoute] RemoveTestimonialCommandRequest request)
+        [HttpDelete("[action]/{Id}")]
+        public async Task<IActionResult> RemoveTestimonial(string Id)
         {
+            RemoveTestimonialCommandRequest request = new RemoveTestimonialCommandRequest { Id = Id };
             RemoveTestimonialCommandResponse response = await _mediator.Send(request);
             return Ok(response);
         }

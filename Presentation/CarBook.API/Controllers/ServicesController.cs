@@ -32,7 +32,7 @@ namespace CarBook.API.Controllers
             return Ok(response);
         }
 
-        [HttpGet("{Id}")]
+        [HttpGet("[action]/{Id}")]
         public async Task<IActionResult> GetByIdService([FromRoute] GetByIdServiceQueryRequest request)
         {
             GetByIdServiceQueryResponse response = await _mediator.Send(request);
@@ -40,22 +40,23 @@ namespace CarBook.API.Controllers
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> CreateService([FromQuery] CreateServiceCommandRequest request)
+        public async Task<IActionResult> CreateService([FromBody] CreateServiceCommandRequest request)
         {
             CreateServiceCommandResponse response = await _mediator.Send(request);
             return Ok(response);
         }
 
-        [HttpPost("[action]")]
-        public async Task<IActionResult> UpdateService([FromQuery] UpdateServiceCommandRequest request)
+        [HttpPut("[action]")]
+        public async Task<IActionResult> UpdateService([FromBody] UpdateServiceCommandRequest request)
         {
             UpdateServiceCommandResponse response = await _mediator.Send(request);
             return Ok(response);
         }
 
-        [HttpDelete("{Id}")]
-        public async Task<IActionResult> RemoveService([FromRoute] RemoveServiceCommandRequest request)
+        [HttpDelete("[action]/{Id}")]
+        public async Task<IActionResult> RemoveService(string Id)
         {
+            RemoveServiceCommandRequest request = new RemoveServiceCommandRequest { Id = Id };
             RemoveServiceCommandResponse response = await _mediator.Send(request);
             return Ok(response);
         }

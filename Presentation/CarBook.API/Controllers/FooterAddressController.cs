@@ -32,7 +32,7 @@ namespace CarBook.API.Controllers
             return Ok(response);
         }
 
-        [HttpGet("{Id}")]
+        [HttpGet("[action]/{Id}")]
         public async Task<IActionResult> GetByIdFooterAddress([FromRoute] GetByIdFooterAddressQueryRequest request)
         {
             GetByIdFooterAddressQueryResponse response = await _mediator.Send(request);
@@ -40,22 +40,23 @@ namespace CarBook.API.Controllers
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> CreateFooterAddress([FromQuery] CreateFooterAddressCommandRequest request)
+        public async Task<IActionResult> CreateFooterAddress([FromBody] CreateFooterAddressCommandRequest request)
         {
             CreateFooterAddressCommandResponse response = await _mediator.Send(request);
             return Ok(response);
         }
 
-        [HttpPost("[action]")]
-        public async Task<IActionResult> UpdateFooterAddress([FromQuery] UpdateFooterAddressCommandRequest request)
+        [HttpPut("[action]")]
+        public async Task<IActionResult> UpdateFooterAddress([FromBody] UpdateFooterAddressCommandRequest request)
         {
             UpdateFooterAddressCommandResponse response = await _mediator.Send(request);
             return Ok(response);
         }
 
-        [HttpDelete("{Id}")]
-        public async Task<IActionResult> RemoveFooterAdress([FromRoute] RemoveFooterAddressCommandRequest request)
+        [HttpDelete("[action]/{Id}")]
+        public async Task<IActionResult> RemoveFooterAdress(string Id)
         {
+            RemoveFooterAddressCommandRequest request = new RemoveFooterAddressCommandRequest { Id = Id };
             RemoveFooterAddressCommandResponse response = await _mediator.Send(request);
             return Ok(response);
         }
