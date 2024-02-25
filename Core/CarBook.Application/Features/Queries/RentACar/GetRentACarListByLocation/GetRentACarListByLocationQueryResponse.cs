@@ -1,7 +1,9 @@
-﻿namespace CarBook.Application.Features.Queries.RentACar.GetRentACarListByLocation
+﻿using CarBook.Application.DTOs;
+
+namespace CarBook.Application.Features.Queries.RentACar.GetRentACarListByLocation
 {
     public class GetRentACarListByLocationQueryResponse
     {
-        public List<Guid> CarId { get; set; }
+        public List<RentACarDto> Cars { get; set; }
     }
 }

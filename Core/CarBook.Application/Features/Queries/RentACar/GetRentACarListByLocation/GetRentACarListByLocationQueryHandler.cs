@@ -1,10 +1,7 @@
-﻿using CarBook.Application.Interfaces.Repositories;
+﻿using CarBook.Application.DTOs;
+using CarBook.Application.Interfaces.Repositories;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace CarBook.Application.Features.Queries.RentACar.GetRentACarListByLocation
 {
@@ -19,11 +16,20 @@ namespace CarBook.Application.Features.Queries.RentACar.GetRentACarListByLocatio
 
         public async Task<GetRentACarListByLocationQueryResponse> Handle(GetRentACarListByLocationQueryRequest request, CancellationToken cancellationToken)
         {
-            var carId = _rentACarReadRepository.GetAll(false).Where(c => c.LocationID == request.Id && c.Available == request.available).Select(c=>c.CarID).ToList();
-            return new ()
+            var values = await _rentACarReadRepository.GetWhere(c => c.LocationID == request.Id && c.Available == request.available).Include(x => x.Car).ThenInclude(y => y.Brand).ToListAsync();
+            var cars = values.Select(car => new RentACarDto
             {
-              CarId = carId,
+                Id = car.Car.Id,
+                Brand = car.Car.Brand.Name,
+                Model = car.Car.Model,
+                CoverImageUrl = car.Car.CoverImageUrl
+            });
+
+            return new GetRentACarListByLocationQueryResponse
+            {
+                Cars = cars.ToList(),
             };
+
         }
     }
 }
