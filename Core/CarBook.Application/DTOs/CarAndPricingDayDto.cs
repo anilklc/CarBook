@@ -9,6 +9,7 @@ namespace CarBook.Application.DTOs
     public class CarAndPricingDayDto
     {
         public string Id { get; set; }
+        public Guid CarID { get; set; }
         public Guid BrandID { get; set; }
         public string BrandName { get; set; }
         public string Model { get; set; }

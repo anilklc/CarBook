@@ -55,7 +55,7 @@ namespace CarBook.Application.Features.Queries.Car.GetCarWithPricingDay
                     carDto.PricingName = pricingNames.ContainsKey(carPricing.PricingID) ? pricingNames[carPricing.PricingID] : "";
                     carDto.PricingAmount = carPricing.Amount;
                 }
-
+                carDto.CarID = car.Id;
                 return carDto;
             }).ToList();
 

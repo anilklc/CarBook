@@ -1,0 +1,54 @@
+﻿@model CreateReservationDto
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/UILayout/Index.cshtml";
+}
+
+<div class="col-md-12 block-9 mb-md-5">
+    <form class="bg-light p-5 contact-form" method="post">
+        <h3 class="alert alert-success"> Car Reservation Form</h3>
+        <br/>
+        <div class="form-group">
+            <input type="hidden" asp-for="CarID" value="@ViewBag.Id" class="form-control" placeholder="The Car You Want">
+        </div>
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" asp-for="Name" class="form-control" placeholder="Your Name">
+        </div>
+        <div class="form-group">
+            <label>Surname</label>
+            <input type="text" asp-for="Surname" class="form-control" placeholder="Your Surname">
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input type="text" asp-for="Email" class="form-control" placeholder="Your Email">
+        </div>
+        <div class="form-group">
+            <label>Phone</label>
+            <input type="text" asp-for="Phone" class="form-control" placeholder="Your Phone">
+        </div>
+        <div class="form-group">
+            @Html.DropDownListFor(x => x.DropOffLocationID, (List<SelectListItem>)ViewBag.v, new { @class = "form-control"})
+        </div>
+        <div class="form-group">
+            @Html.DropDownListFor(x => x.PickUpLocationID, (List<SelectListItem>)ViewBag.v, new { @class = "form-control"})
+        </div>
+        <div class="form-group">
+            <label>Age</label>
+            <input type="text" asp-for="Age" class="form-control" placeholder="Age">
+        </div>
+        <div class="form-group">
+            <label>License Year</label>
+            <input type="text" asp-for="DriverLicenseYear" class="form-control" placeholder="License Year">
+        </div>
+        <div class="form-group">
+            <label>Description</label>
+            <textarea asp-for ="Description" id="" cols="30" rows="7" class="form-control" placeholder="Description"></textarea>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
+        </div>
+    </form>
+
+</div>
+
