@@ -9,6 +9,7 @@ using CarBook.Application.Features.Queries.Banner.GetByIdBanner;
 using CarBook.Application.Features.Queries.Car.GetAllCar;
 using CarBook.Application.Features.Queries.Car.GetByIdCar;
 using CarBook.Application.Features.Queries.Car.GetCarWithBrand;
+using CarBook.Application.Features.Queries.Car.GetCarWithBrandWithPricing;
 using CarBook.Application.Features.Queries.Car.GetCarWithPricing;
 using CarBook.Application.Features.Queries.Car.GetCarWithPricingDay;
 using CarBook.Application.Features.Queries.Car.GetLastFiveCar;
@@ -92,5 +93,11 @@ namespace CarBook.API.Controllers
             GetCarWithPricingDayQueryResponse response = await _mediator.Send(new GetCarWithPricingDayQueryRequest());
             return Ok(response);
         }
-    }
+		[HttpGet("[action]")]
+		public async Task<IActionResult> GetCarWithBrandWithPricing()
+		{
+			GetCarWithBrandWithPricingQueryResponse response = await _mediator.Send(new GetCarWithBrandWithPricingQueryRequest());
+			return Ok(response);
+		}
+	}
 }
