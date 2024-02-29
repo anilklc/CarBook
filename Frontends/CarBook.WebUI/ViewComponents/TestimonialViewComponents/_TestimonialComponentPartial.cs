@@ -27,7 +27,6 @@ namespace CarBook.WebUI.ViewComponents.TestimonialViewCompenents
             }
             return View();
 
-
         }
     }
 }
