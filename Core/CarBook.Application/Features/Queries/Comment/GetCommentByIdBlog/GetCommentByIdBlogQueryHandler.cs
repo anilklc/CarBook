@@ -22,7 +22,8 @@ namespace CarBook.Application.Features.Queries.Comment.GetCommentByIdBlog
             var comments = _commentReadRepository.GetAll(false).Where(c =>c.BlogID == request.blogId).ToList();
             return new()
             {
-               Comments = comments,
+                Comments = comments,
+
             };
         }
     }

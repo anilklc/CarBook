@@ -6,13 +6,12 @@ using System.Threading.Tasks;
 
 namespace CarBook.Dto.Comment
 {
-    public class ResultCommentDto
+    public class CreateCommentDto
     {
-        public string Id { get; set; }
         public string Name { get; set; }
-        public string Description { get; set; }
-        public string Email { get; set; }
-        public Guid BlogID { get; set; }
         public DateTime CreatedDate { get; set; }
+        public string Description { get; set; }
+        public string BlogID { get; set; }
+        public string Email { get; set; }
     }
 }
