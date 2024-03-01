@@ -58,6 +58,8 @@ namespace CarBook.Persistence
             services.AddScoped<IRentACarWriteRepository, RentACarWriteRepository>();
             services.AddScoped<IReservationReadRepository, ReservationReadRepository>();
             services.AddScoped<IReservationWriteRepository, ReservationWriteRepository>();
+            services.AddScoped<ICarFeatureReadRepository, CarFeatureReadRepository>();
+            services.AddScoped<ICarFeatureWriteRepository, CarFeatureWriteRepository>();
         }
     }
 }

@@ -29,6 +29,7 @@
                                         <th>Remove</th>
                                         <th>Update</th>
                                         <th>İnfo</th>
+                                        <th>Feature Add</th>
                                         <th>View Website</th>
                                         <th>Pricing İnfo</th>
                                     </tr>
@@ -44,7 +45,8 @@
                                         <td>@item.Km</td>
                                         <td><a href="/AdminCar/RemoveCar/@item.Id" class="btn btn-outline-danger">Remove</a></td>
                                         <td><a href="/AdminCar/UpdateCar/@item.Id" class="btn btn-outline-success">Update</a></td>
-                                        <td><a href="/CarList/CarDetail/@item.Id" class="btn btn-outline-info">İnfo</a></td>
+                                        <td><a href="/Admin/AdminCarFeatureDetail/Index/@item.Id" class="btn btn-outline-info">İnfo</a></td>
+                                        <td><a href="/Admin/AdminCarFeatureDetail/CreateFeatureByCarId/@item.Id" class="btn btn-outline-info">Feature Add</a></td>
                                         <td><a href="/CarList/CarDetail/@item.Id" class="btn btn-outline-secondary">View Website</a></td>
                                         <td><a href="/CarList/CarDetail/@item.Id" class="btn btn-outline-primary">Pricing İnfo</a></td>
                                     </tr>
