@@ -1,5 +1,10 @@
 using CarBook.Application;
+using CarBook.Domain.Entities;
 using CarBook.Persistence;
+using CarBook.Persistence.Context;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +12,16 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddPersistenceServices(builder.Configuration);
 builder.Services.AddApplicationService();
 builder.Services.AddControllers();
+builder.Services.AddAuthorization();
+builder.Services.AddIdentityApiEndpoints<AppUser>(opt =>
+{
+	opt.Password.RequiredLength = 3;
+	opt.Password.RequireNonAlphanumeric = false;
+	opt.Password.RequireDigit = false;
+	opt.Password.RequireLowercase = false;
+	opt.Password.RequireUppercase = false;
+}).AddEntityFrameworkStores<CarBookDbContext>();
+//builder.Services.AddIdentity<AppUser,AppRole>().AddEntityFrameworkStores<CarBookDbContext>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -24,6 +39,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.MapGroup("/User").MapIdentityApi<AppUser>();
 
 app.MapControllers();
 

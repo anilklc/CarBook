@@ -1,5 +1,6 @@
 ﻿using CarBook.Domain.Common;
 using CarBook.Domain.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace CarBook.Persistence.Context
 {
-    public class CarBookDbContext : DbContext
+    public class CarBookDbContext : IdentityDbContext<AppUser,AppRole,Guid>
     {
         public CarBookDbContext(DbContextOptions options) : base(options)
         {
