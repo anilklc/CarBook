@@ -20,8 +20,8 @@ builder.Services.AddIdentityApiEndpoints<AppUser>(opt =>
 	opt.Password.RequireDigit = false;
 	opt.Password.RequireLowercase = false;
 	opt.Password.RequireUppercase = false;
-}).AddEntityFrameworkStores<CarBookDbContext>();
-//builder.Services.AddIdentity<AppUser,AppRole>().AddEntityFrameworkStores<CarBookDbContext>();
+}).AddRoles<AppRole>().AddEntityFrameworkStores<CarBookDbContext>();
+
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

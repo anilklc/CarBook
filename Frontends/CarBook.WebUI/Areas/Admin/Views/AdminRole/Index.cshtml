@@ -1,0 +1,60 @@
+﻿@model List<ResultRoleDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            Role Area
+                        </h4>
+                        <p class="card-subtitle mb-4">
+                            Role area edit page.
+                        </p>
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Name</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        count++;
+                                        <tr>
+                                            <td>@count</td>
+                                            <td>@item.Name</td>   
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            <td><a href="/Admin/AdminRole/CreateRole/" class="btn btn-outline-primary">Create Role</a></td>
+                        </div>
+
+                    </div>
+                    <!-- end card-body-->
+                </div>
+                <!-- end card -->
+
+            </div>
+            <!-- end col -->
+
+
+
+        </div>
+        <!-- end col -->
+    </div>
+
+    <!-- end page title -->
+
+</div> <!-- container-fluid -->

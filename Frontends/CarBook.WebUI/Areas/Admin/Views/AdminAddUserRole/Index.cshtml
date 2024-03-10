@@ -1,0 +1,64 @@
+﻿@model List<ResultUserWithRoleDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            User Role Area
+                        </h4>
+                        <p class="card-subtitle mb-4">
+                           User Role area edit page.
+                        </p>
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Username</th>
+                                        <th>Role Name</th>
+                                        <th>Remove</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        count++;
+                                        <tr>
+                                            <td>@count</td>
+                                            <td>@item.Username</td>
+                                            <td>@item.RoleName</td>
+                                            <td><a href="/Admin/AdminAddUserRole/RemoveUserRole/@item.Username/@item.RoleName" class="btn btn-outline-danger">Remove</a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            <td><a href="/Admin/AdminAddUserRole/AddUserRole/" class="btn btn-outline-primary">Add User Role</a></td>
+                        </div>
+
+                    </div>
+                    <!-- end card-body-->
+                </div>
+                <!-- end card -->
+
+            </div>
+            <!-- end col -->
+
+
+
+        </div>
+        <!-- end col -->
+    </div>
+
+    <!-- end page title -->
+
+</div> <!-- container-fluid -->
