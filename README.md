@@ -1,82 +1,84 @@
-# CarBook Projesi
+# CarBook Project
 
-CarBook, araç kiralama işlemlerinin yapıldığı, araçların ücretlerinin bulunduğu ve araçlar hakkında detaylı bilgilerin alınabildiği bir web uygulamasıdır. Bu uygulama, ASP.NET Core 8 kullanılarak geliştirilmiştir. Backend kısmında Onion, CQRS ve Mediator patternleri kullanılarak oluşturulmuş bir Web API bulunmaktadır. Veritabanı olarak MSSQL kullanılmıştır. Ayrıca, kullanıcı ve rol yetkilendirmeleri için Identity yapısı entegre edilmiştir.
+CarBook is a web application where car rental transactions are performed, car prices are listed, and detailed information about cars can be obtained. This application is developed using ASP.NET Core 8. In the backend, a Web API is built using Onion, CQRS, and Mediator patterns. MSSQL is used as the database. Additionally, Identity structure is integrated for user and role authorizations.
 
-## Özellikler
+## Features
 
-- Araçların eklenmesi, güncellenmesi ve silinmesi
-- Araç kiralama işlemleri
-- Araçların ücretlerinin belirlenmesi
-- Araçlar hakkında detaylı bilgi alınması
-- Blog gibi detaylar
-- Admin paneli
+- Adding, updating, and deleting cars
+- Car rental transactions
+- Determining car prices
+- Getting detailed information about cars
+- Blog-like details
+- Admin panel
 
-## Kullanılan Teknolojiler
+## Technologies Used
 
 ### Backend
-- ASP.NET Core 8: Backend tarafında kullanılan framework.
-- Onion, CQRS ve Mediator Patternleri: Proje içindeki iş mantığını organize etmek için kullanılmıştır.
-- MSSQL: Veritabanı olarak tercih edilmiştir.
-- Identity: Kullanıcı ve rol yetkilendirmeleri için entegre edilmiştir.
-- AutoMapper: Objeler arasında veri eşleştirmesi sağlamak için kullanılmıştır.
+- **ASP.NET Core 8:** The framework used on the backend.
+- **Onion, CQRS, and Mediator Patterns:** Used to organize the business logic within the project.
+- **MSSQL:** Preferred as the database.
+- **Identity:** Integrated for user and role authorizations.
+- **AutoMapper:** Used for object-to-object mapping.
 
 ### Frontend
-- MVC (Model-View-Controller): Frontend tarafında kullanılan model-view-controller mimarisi.
-- HTML, CSS, JavaScript: Web sitesi için temel teknolojiler.
+- **MVC (Model-View-Controller):** The architecture used on the frontend.
+- **HTML, CSS, JavaScript:** Basic technologies for the website.
 
-## Proje Yapısı
+## Project Structure
 
-Proje, Onion mimarisini takip eder. Temel katmanlar şunlardır:
+The project follows the Onion architecture. The core layers are as follows:
 
-- **Core:** Temel varlıklar ve iş mantığı kuralları burada bulunur.
-- **Infrastructure:** Veritabanı işlemleri ve harici servisler burada bulunur.
-- **Application:** Uygulama katmanı, iş mantığını uygular ve dış dünya ile etkileşim kurar.
-- **Web API:** RESTful API'yi sağlayan ve istekleri işleyen katmandır.
-- **Web UI:** MVC tarafı, kullanıcı arayüzünü oluşturur ve sunar.
-- **Admin Panel:** Yönetici arayüzü için ayrı bir bölüm bulunmaktadır.
+- **Core:** Contains fundamental entities and business logic rules.
+- **Infrastructure:** Contains database operations and external services.
+- **Application:** Applies the business logic and interacts with the external world.
+- **Web API:** The layer providing RESTful API and handling requests.
+- **Web UI:** The MVC side, creating and presenting the user interface.
+- **Admin Panel:** A separate section for the admin interface.
 
-## Ekran Görüntüleri
+## Screenshots
 
-### Ana Sayfa ve Diğer Sayfalar
+### Home Page and Other Pages
 
-![Sayfa Görüntüsü 1](Screenshots/1.png)
-![Sayfa Görüntüsü 2](Screenshots/2.png)
-![Sayfa Görüntüsü 3](Screenshots/3.png)
-![Sayfa Görüntüsü 4](Screenshots/4.png)
-![Sayfa Görüntüsü 5](Screenshots/5.png)
-![Sayfa Görüntüsü 6](Screenshots/6.png)
-![Sayfa Görüntüsü 7](Screenshots/7.png)
+![Screenshot 1](Screenshots/1.png)
+![Screenshot 2](Screenshots/2.png)
+![Screenshot 3](Screenshots/3.png)
+![Screenshot 4](Screenshots/4.png)
+![Screenshot 5](Screenshots/5.png)
+![Screenshot 6](Screenshots/6.png)
+![Screenshot 7](Screenshots/7.png)
 
+### Admin Panel
 
-### Admin Paneli
+![Admin Panel 1](Screenshots/8.png)
+![Admin Panel 2](Screenshots/9.png)
+![Admin Panel 3](Screenshots/10.png)
+![Admin Panel 4](Screenshots/11.png)
+![Admin Panel 5](Screenshots/12.png)
+![Admin Panel 6](Screenshots/13.png)
+![Admin Panel 7](Screenshots/14.png)
 
-![Admin Paneli Görüntüsü 1](Screenshots/8.png)
-![Admin Paneli Görüntüsü 2](Screenshots/9.png)
-![Admin Paneli Görüntüsü 3](Screenshots/10.png)
-![Admin Paneli Görüntüsü 4](Screenshots/11.png)
-![Admin Paneli Görüntüsü 5](Screenshots/12.png)
-![Admin Paneli Görüntüsü 6](Screenshots/13.png)
-![Admin Paneli Görüntüsü 7](Screenshots/14.png)
+### Swagger Screenshots
 
-### Swagger Ekran Görüntüleri
+![Swagger 1](Screenshots/15.png)
+![Swagger 2](Screenshots/16.png)
 
-![Swagger Görüntüsü 1](Screenshots/15.png)
-![Swagger Görüntüsü 2](Screenshots/16.png)
+## Installation
 
-## Kurulum
-
-1. Projenin klonlanması: `git clone https://github.com/anilklc/CarBook.git`
-2. Visual Studio veya Visual Studio Code ile projenin açılması.
-3. `appsettings.json` dosyasında veritabanı bağlantı dizesinin güncellenmesi.
-4. Package Manager Console veya Terminal'i açın.
-5. Migration'ların alınması ve veritabanının oluşturulması için aşağıdaki komutları sırasıyla çalıştırın:
+1. Clone the project: `git clone https://github.com/anilklc/CarBook.git`
+2. Open the project with Visual Studio or Visual Studio Code.
+3. Update the database connection string in the `appsettings.json` file.
+4. Open the Package Manager Console or Terminal.
+5. Run the following commands to get the migrations and create the database:
    ```bash
    dotnet ef migrations add InitialMigration
    dotnet ef database update
+6. Build and run the project.
 
-6. Projenin derlenmesi ve çalıştırılması.
 
-## Gereksinimler
 
+## Requirements
 - .NET Core SDK
 - MSSQL Server
+
+## License
+MIT License
